@@ -6,7 +6,7 @@ git checkout -b deploy
 
 git pull heroku master
 elm-app build
-git add -f build/static/*
+git add -f build
 git commit --allow-empty -m 'Deploying'
 git push heroku deploy:master
 
