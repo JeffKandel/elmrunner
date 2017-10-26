@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "elm-app build && serve -s build",
+    "start": "serve -s build",
     "deploy": "bash deploy.sh"
   },
   "repository": {
