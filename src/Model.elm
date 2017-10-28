@@ -47,5 +47,5 @@ type alias Times =
     , sunsetMS: Int
     }
 
-
-
+type alias Clothes =
+    List String
