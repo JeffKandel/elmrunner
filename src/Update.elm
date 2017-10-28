@@ -111,10 +111,8 @@ update msg model =
                  , sunsetMS = weatherData.sys.sunset
                  , temp = round weatherData.main.temp
                  , conditionsCode = weatherData.conditionsCode.code
-                 , clothes = getClothes model
                 }
-                |> update (GetClothes (getClothes) )
-
+                |> update (GetClothes (getClothes model) )
             GetWeather (Err _) ->
                 (model, Cmd.none)
             GetClothes clothes ->
