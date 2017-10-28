@@ -1,22 +1,19 @@
 module Model exposing (..)
 
----- MODEL ----
-
-
 type alias Model =
     { gender: String
-    ,intensity: String
-    ,feel: String
-    ,weather: Weather
-    ,times: Times
-    ,clothes: List String
+    , intensity: String
+    , feel: String
+    , weather: Weather
+    , times: Times
+    , clothes: List String
     }
 
 
 initialWeather : Weather
 initialWeather =
     { temp = 60
-    , conditionscode = 800
+    , conditionsCode = 800
     , windSpeed = 5
     }
 
@@ -38,7 +35,7 @@ initialModel =
 
 type alias Weather =
     { temp: Int
-    , conditionscode: Int
+    , conditionsCode: Int
     , windSpeed: Int
     }
 
