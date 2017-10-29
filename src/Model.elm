@@ -1,5 +1,7 @@
 module Model exposing (..)
 
+import Dict exposing (..)
+
 type alias Model =
     { gender: String
     , intensity: String
@@ -10,6 +12,7 @@ type alias Model =
     , sunriseMS: Int
     , sunsetMS: Int
     , clothes: Clothes
+    , clothingDict: ClothingDict
     }
 
 initialModel : Model
@@ -23,7 +26,11 @@ initialModel =
     , sunriseMS = 4
     , sunsetMS = 3
     , clothes = ["Shoes", "Sunblock"]
+    , clothingDict = Dict.empty
     }
 
 type alias Clothes =
     List String
+
+type alias ClothingDict =
+    Dict String List
