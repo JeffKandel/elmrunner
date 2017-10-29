@@ -47,17 +47,28 @@ update msg model =
                 in
                     ( model, getClothing updatedModel )
             SetIntensity selectedIntensity ->
-                ({ model | intensity = selectedIntensity }, Cmd.none)
+                let
+                    updatedModel =
+                        { model | intensity = selectedIntensity }
+                in
+                    ( model, getClothing updatedModel )
             SetFeel selectedFeel ->
-                ({ model | feel = selectedFeel }, getClothing model)
+                let
+                    updatedModel =
+                        { model | feel = selectedFeel }
+                in
+                    ( model, getClothing updatedModel )
             SetWeather (Ok weatherData) ->
-                ({ model
-                 | sunriseMS = weatherData.sys.sunrise
-                 , sunsetMS = weatherData.sys.sunset
-                 , temp = round weatherData.main.temp
-                 , conditionsCode = weatherData.conditionsCode.code
-                 }, Cmd.none
-                )
+                let
+                    updatedModel =
+                        { model
+                          | sunriseMS = weatherData.sys.sunrise
+                          , sunsetMS = weatherData.sys.sunset
+                          , temp = round weatherData.main.temp
+                          , conditionsCode = weatherData.conditionsCode.code
+                        }
+                in
+                    ( model, getClothing updatedModel )
             SetWeather (Err _) ->
                 (model, Cmd.none)
             SetClothing (Ok clothingList) ->
