@@ -5,7 +5,6 @@ import Model exposing (Model)
 buildKeyFromModel: Model -> String
 buildKeyFromModel model =
     let
-        baseUrl = "25,partly%20cloudy,no%20wind,day,race,in%20between"
         gender = model.gender
         temp = toString (getRoundedTemp model.temp)
         condition = conditionsFromCode model.conditionsCode
