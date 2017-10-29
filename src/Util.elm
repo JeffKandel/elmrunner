@@ -28,7 +28,7 @@ windFromWindSpeed speed =
 
 conditionsFromCode: Int -> String
 conditionsFromCode code =
-    "partly cloudy"
+    "light rain"
 
 
 timeOfDay: (Int,Int) -> String
