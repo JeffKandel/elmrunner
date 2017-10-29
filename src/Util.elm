@@ -7,7 +7,7 @@ buildKeyFromModel model =
     let
         baseUrl = "25,partly%20cloudy,no%20wind,day,race,in%20between"
         gender = model.gender
-        temp = toString model.temp
+        temp = toString (getRoundedTemp model.temp)
         condition = conditionsFromCode model.conditionsCode
         wind = windFromWindSpeed model.windSpeed
         time = timeOfDay (model.sunriseMS, model.sunsetMS)
@@ -34,3 +34,12 @@ conditionsFromCode code =
 timeOfDay: (Int,Int) -> String
 timeOfDay (sunrise,sunset) =
     "dawn"
+
+getRoundedTemp: Int -> Int
+getRoundedTemp temp =
+    if temp < -10 then
+        -10
+    else if temp > 100 then
+        100
+    else
+        temp // 5 * 5
