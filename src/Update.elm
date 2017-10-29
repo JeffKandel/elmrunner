@@ -35,7 +35,7 @@ getClothing model =
       key = buildKeyFromModel model
       url = "/api/" ++ key
     in
-      Http.send SetClothing (Http.get url decodeClothingResponse)
+      Http.send SetClothing (Http.get "/api/female,25,partly%20cloudy,no%20wind,day,race,in%20between" decodeClothingResponse)
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
