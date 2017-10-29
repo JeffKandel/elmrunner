@@ -32,27 +32,33 @@ clothingUrl: String
 clothingUrl =
   "/api/female,25,partly%20cloudy,no%20wind,day,race,in%20between"
 
-getClothing : String -> Cmd Msg
-getClothing url =
-    Http.send SetClothing (Http.get url decodeClothingResponse)
+getClothing : Model -> Cmd Msg
+getClothing model =
+    let
+      url = clothingUrl
+    in
+      Http.send SetClothing (Http.get url decodeClothingResponse)
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
             SetGender selectedGender ->
-                ({ model | gender = selectedGender }, Cmd.none)
+                let
+                    updatedModel =
+                        { model | gender = selectedGender }
+                in
+                    ( model, getClothing updatedModel )
             SetIntensity selectedIntensity ->
                 ({ model | intensity = selectedIntensity }, Cmd.none)
             SetFeel selectedFeel ->
-                ({ model | feel = selectedFeel }, Cmd.none)
+                ({ model | feel = selectedFeel }, getClothing model)
             SetWeather (Ok weatherData) ->
                 ({ model
                  | sunriseMS = weatherData.sys.sunrise
                  , sunsetMS = weatherData.sys.sunset
                  , temp = round weatherData.main.temp
                  , conditionsCode = weatherData.conditionsCode.code
-                 }
-                 , Cmd.none
+                 }, Cmd.none
                 )
             SetWeather (Err _) ->
                 (model, Cmd.none)

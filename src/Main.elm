@@ -9,7 +9,7 @@ main : Program Never Model Msg
 main =
     Html.program
         { view = view
-        , init = ( initialModel,  getClothing clothingUrl)
+        , init = ( initialModel, getWeather)
         , update = update
         , subscriptions = always Sub.none
         }
