@@ -37,35 +37,37 @@ getClothing model =
     in
       Http.send SetClothing (Http.get url decodeClothingResponse)
 
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
+    updateModel msg model
+        |> getClothingForModel
+
+updateModel : Msg -> Model -> Model
+updateModel msg model =
     case msg of
             SetGender selectedGender ->
-                let
-                    updatedModel =
-                        { model | gender = selectedGender }
-                in
-                    ( model, getClothing updatedModel )
+                ({ model | gender = selectedGender })
             SetIntensity selectedIntensity ->
-                ({ model | intensity = selectedIntensity }, Cmd.none)
+                ({ model | intensity = selectedIntensity })
             SetFeel selectedFeel ->
-                ({ model | feel = selectedFeel }, getClothing model)
+                ({ model | feel = selectedFeel })
             SetWeather (Ok weatherData) ->
                 ({ model
                  | sunriseMS = weatherData.sys.sunrise
                  , sunsetMS = weatherData.sys.sunset
                  , temp = round weatherData.main.temp
                  , conditionsCode = weatherData.conditionsCode.code
-                 }, Cmd.none
+                 }
                 )
             SetWeather (Err _) ->
-                (model, Cmd.none)
+                (model)
             SetClothing (Ok clothingList) ->
-                ({ model | clothes = clothingList }, Cmd.none)
+                ({ model | clothes = clothingList })
             SetClothing (Err error) ->
-                ({ model | error = toString error}, Cmd.none)
+                ({ model | error = toString error})
 
-
+getClothingForModel: Model -> (Model, Cmd Msg)
+getClothingForModel model = (model, getClothing model)
 
 
 
