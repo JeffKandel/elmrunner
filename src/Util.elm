@@ -1,0 +1,36 @@
+module Util exposing (..)
+
+import Model exposing (Model)
+
+buildUrlFromModel: Model -> String
+buildUrlFromModel model =
+    let
+        baseUrl = "25,partly%20cloudy,no%20wind,day,race,in%20between"
+        gender = model.gender
+        temp = toString model.temp
+        condition = conditionsFromCode model.conditionsCode
+        wind = windFromWindSpeed model.windSpeed
+        time = timeOfDay (model.sunriseMS, model.sunsetMS)
+        intensity = model.intensity
+        feel = model.feel
+        list = [gender, temp, condition, wind, time, intensity, feel]
+        url = String.join "," list
+    in
+        url
+
+windFromWindSpeed: Int -> String
+windFromWindSpeed speed =
+    if speed < 1 then
+        "no wind"
+    else if speed < 10 then
+        "light wind"
+    else
+        "heavy wind"
+
+conditionsFromCode: Int -> String
+conditionsFromCode code =
+    "light rain"
+
+timeOfDay: (Int,Int) -> String
+timeOfDay (sunrise,sunset) =
+    "dawn"

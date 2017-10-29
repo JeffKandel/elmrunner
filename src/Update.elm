@@ -4,8 +4,10 @@ import Model exposing (Model, Clothes)
 import DecodeWeather exposing (OpenWeatherResponse, decodeOpenWeatherResponse)
 import DecodeClothing exposing (decodeClothingResponse)
 import Secrets exposing (openWeatherAPIKey)
+import Util exposing (..)
 
 import Http
+import Date exposing (now, toTime)
 
 type Msg
     = SetGender String
@@ -35,7 +37,7 @@ clothingUrl =
 getClothing : Model -> Cmd Msg
 getClothing model =
     let
-      url = clothingUrl
+      url = buildUrlFromModel model
     in
       Http.send SetClothing (Http.get url decodeClothingResponse)
 
