@@ -28,11 +28,12 @@ windFromWindSpeed speed =
 
 conditionsFromCode: Int -> String
 conditionsFromCode code =
-    "light rain"
+    "partly cloudy"
+
 
 timeOfDay: (Int,Int) -> String
 timeOfDay (sunrise,sunset) =
-    "dawn"
+    "day"
 
 getRoundedTemp: Int -> Int
 getRoundedTemp temp =
