@@ -66,8 +66,8 @@ update msg model =
                 (model, Cmd.none)
             SetClothing (Ok clothingData) ->
                 ({ model | clothingDict = clothingData }, Cmd.none)
-            SetClothing (Err _) ->
-                (model, Cmd.none)
+            SetClothing (Err error) ->
+                ({ model | error = toString error}, Cmd.none)
             SetClothes ->
                 ({ model | clothes = setClothes model }, Cmd.none)
 

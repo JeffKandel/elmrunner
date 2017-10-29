@@ -13,6 +13,7 @@ type alias Model =
     , sunsetMS: Int
     , clothes: Clothes
     , clothingDict: ClothingDict
+    , error: String
     }
 
 initialModel : Model
@@ -27,6 +28,7 @@ initialModel =
     , sunsetMS = 3
     , clothes = ["Shoes", "Sunblock"]
     , clothingDict = Dict.empty
+    , error = ""
     }
 
 type alias Clothes =
