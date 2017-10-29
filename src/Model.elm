@@ -12,7 +12,6 @@ type alias Model =
     , sunriseMS: Int
     , sunsetMS: Int
     , clothes: Clothes
-    , error: String
     }
 
 initialModel : Model
@@ -25,8 +24,7 @@ initialModel =
     , windSpeed = 5
     , sunriseMS = 4
     , sunsetMS = 3
-    , clothes = ["Shoes", "Sunblock"]
-    , error = ""
+    , clothes = []
     }
 
 type alias Clothes =

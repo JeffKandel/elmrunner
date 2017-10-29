@@ -74,7 +74,7 @@ update msg model =
             SetClothing (Ok clothingList) ->
                 ({ model | clothes = clothingList }, Cmd.none)
             SetClothing (Err error) ->
-                ({ model | error = toString error}, Cmd.none)
+                ( model , Cmd.none)
 
 
 
