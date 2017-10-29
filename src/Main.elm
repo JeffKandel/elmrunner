@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Html exposing (..)
 import Model exposing (Model,initialModel)
-import Update exposing (update, Msg, getWeather, getClothing, clothingUrl)
+import Update exposing (update, Msg, getWeather)
 import View exposing (view)
 
 main : Program Never Model Msg

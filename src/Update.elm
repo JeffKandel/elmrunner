@@ -7,7 +7,6 @@ import Secrets exposing (openWeatherAPIKey)
 import Util exposing (..)
 
 import Http
-import Date exposing (now, toTime)
 
 type Msg
     = SetGender String
