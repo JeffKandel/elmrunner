@@ -1,11 +1,12 @@
 module DecodeClothing exposing (ClothingResponse, decodeClothingResponse)
 
 import Model exposing (ClothingDict)
-import Json.Decode as Decode exposing (dict, Decoder)
+import Dict exposing (..)
+import Json.Decode as Decode exposing (dict, string, list, Decoder)
 
 type alias ClothingResponse =
     { clothingOptions : ClothingDict}
 
-decodeClothingResponse : Decoder ClothingResponse
+decodeClothingResponse : Decoder (Dict String (List String))
 decodeClothingResponse =
-    dict ClothingResponse
+    dict (list string)

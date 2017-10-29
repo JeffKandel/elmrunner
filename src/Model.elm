@@ -33,4 +33,4 @@ type alias Clothes =
     List String
 
 type alias ClothingDict =
-    Dict String List
+    Dict String (List String)

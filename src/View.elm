@@ -13,15 +13,15 @@ view : Model -> Html Msg
 view model =
     div [ class "container" ] [
         div [ class "left-panel" ] [
-            button [ class "btn btn-success", onClick <| GenderPicked "male" ] [ text "Male!" ]
-            , button [ class "btn btn-success", onClick <| GenderPicked "female" ] [ text "Female" ]
-            , button [ class "btn btn-success", onClick <| FeelPicked "cool" ] [ text "Cool" ]
-            , button [ class "btn btn-success", onClick <| FeelPicked "medium" ] [ text "Medium" ]
-            , button [ class "btn btn-success", onClick <| FeelPicked "warm" ] [ text "Warm" ]
-            , button [ class "btn btn-success", onClick <| IntensityPicked "easy" ] [ text "Easy" ]
-            , button [ class "btn btn-success", onClick <| IntensityPicked "medium" ] [ text "Medium" ]
-            , button [ class "btn btn-success", onClick <| IntensityPicked "hard" ] [ text "Hard" ]
-            , button [ class "btn btn-success", onClick <| IntensityPicked "race" ] [ text "Race" ]
+            button [ class "btn btn-success", onClick <| SetGender "male" ] [ text "Male!" ]
+            , button [ class "btn btn-success", onClick <| SetGender "female" ] [ text "Female" ]
+            , button [ class "btn btn-success", onClick <| SetFeel "cool" ] [ text "Cool" ]
+            , button [ class "btn btn-success", onClick <| SetFeel "medium" ] [ text "Medium" ]
+            , button [ class "btn btn-success", onClick <| SetFeel "warm" ] [ text "Warm" ]
+            , button [ class "btn btn-success", onClick <| SetIntensity "easy" ] [ text "Easy" ]
+            , button [ class "btn btn-success", onClick <| SetIntensity "medium" ] [ text "Medium" ]
+            , button [ class "btn btn-success", onClick <| SetIntensity "hard" ] [ text "Hard" ]
+            , button [ class "btn btn-success", onClick <| SetIntensity "race" ] [ text "Race" ]
         ]
         , div [ class "right-panel" ] [
             div [] [ span [] [ text "Recommended outfit for a run in Central Park"] ]

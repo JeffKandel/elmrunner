@@ -1,6 +1,7 @@
 module Update exposing (..)
 
 import Model exposing (Model, Clothes)
+import Dict exposing (..)
 import DecodeWeather exposing (OpenWeatherResponse, decodeOpenWeatherResponse)
 import DecodeClothing exposing (ClothingResponse, decodeClothingResponse)
 import Secrets exposing (openWeatherAPIKey)
@@ -12,7 +13,7 @@ type Msg
     | SetIntensity String
     | SetFeel String
     | SetWeather (Result Http.Error OpenWeatherResponse)
-    | SetClothing (Result Http.Error ClothingResponse)
+    | SetClothing (Result Http.Error (Dict String (List String)))
     | SetClothes
 
 centralParkWeatherUrl : String
@@ -64,7 +65,7 @@ update msg model =
             SetWeather (Err _) ->
                 (model, Cmd.none)
             SetClothing (Ok clothingData) ->
-                ({ model | clothingDict = clothingData.clothingOptions }, Cmd.none)
+                ({ model | clothingDict = clothingData }, Cmd.none)
             SetClothing (Err _) ->
                 (model, Cmd.none)
             SetClothes ->
