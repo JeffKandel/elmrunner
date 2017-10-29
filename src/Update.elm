@@ -30,7 +30,7 @@ getWeather =
 
 clothingUrl: String
 clothingUrl =
-  "http://localhost:8080/api/female,25,partly%20cloudy,no%20wind,day,race,in%20between"
+  "/api/female,25,partly%20cloudy,no%20wind,day,race,in%20between"
 
 getClothing : String -> Cmd Msg
 getClothing url =
