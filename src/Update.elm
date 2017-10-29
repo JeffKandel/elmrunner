@@ -30,14 +30,11 @@ getWeather =
   in
     Http.send SetWeather (Http.get url decodeOpenWeatherResponse)
 
-clothingUrl: String
-clothingUrl =
-  "/api/female,25,partly%20cloudy,no%20wind,day,race,in%20between"
-
 getClothing : Model -> Cmd Msg
 getClothing model =
     let
-      url = buildUrlFromModel model
+      key = buildKeyFromModel model
+      url = "/api/" ++ key
     in
       Http.send SetClothing (Http.get url decodeClothingResponse)
 

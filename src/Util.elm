@@ -2,8 +2,8 @@ module Util exposing (..)
 
 import Model exposing (Model)
 
-buildUrlFromModel: Model -> String
-buildUrlFromModel model =
+buildKeyFromModel: Model -> String
+buildKeyFromModel model =
     let
         baseUrl = "25,partly%20cloudy,no%20wind,day,race,in%20between"
         gender = model.gender
