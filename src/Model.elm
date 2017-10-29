@@ -20,8 +20,8 @@ initialModel =
     , temp = 60
     , conditionsCode = 800
     , windSpeed = 5
-    , sunriseMS = 1493730691000
-    , sunsetMS = 1493780370000
+    , sunriseMS = 4
+    , sunsetMS = 3
     , clothes = ["Shoes", "Sunblock"]
     }
 
