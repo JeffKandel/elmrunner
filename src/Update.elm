@@ -1,9 +1,8 @@
 module Update exposing (..)
 
 import Model exposing (Model, Clothes)
-import Dict exposing (..)
 import DecodeWeather exposing (OpenWeatherResponse, decodeOpenWeatherResponse)
-import DecodeClothing exposing (ClothingResponse, decodeClothingResponse)
+import DecodeClothing exposing (decodeClothingResponse)
 import Secrets exposing (openWeatherAPIKey)
 
 import Http
@@ -13,8 +12,7 @@ type Msg
     | SetIntensity String
     | SetFeel String
     | SetWeather (Result Http.Error OpenWeatherResponse)
-    | SetClothing (Result Http.Error (Dict String (List String)))
-    | SetClothes
+    | SetClothing (Result Http.Error (List String))
 
 centralParkWeatherUrl : String
 centralParkWeatherUrl =
@@ -32,18 +30,11 @@ getWeather =
 
 clothingUrl: String
 clothingUrl =
-  "./clothing.json"
+  "http://localhost:8080/api/female,25,partly%20cloudy,no%20wind,day,race,in%20between"
 
-getClothingDict : Cmd Msg
-getClothingDict =
-  let
-    url = clothingUrl
-  in
+getClothing : String -> Cmd Msg
+getClothing url =
     Http.send SetClothing (Http.get url decodeClothingResponse)
-
-setClothes : Model -> Clothes
-setClothes model =
-  [toString model.sunriseMS]
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -55,21 +46,22 @@ update msg model =
             SetFeel selectedFeel ->
                 ({ model | feel = selectedFeel }, Cmd.none)
             SetWeather (Ok weatherData) ->
-                { model
+                ({ model
                  | sunriseMS = weatherData.sys.sunrise
                  , sunsetMS = weatherData.sys.sunset
                  , temp = round weatherData.main.temp
                  , conditionsCode = weatherData.conditionsCode.code
-                }
-                |> update SetClothes
+                 }
+                 , Cmd.none
+                )
             SetWeather (Err _) ->
                 (model, Cmd.none)
-            SetClothing (Ok clothingData) ->
-                ({ model | clothingDict = clothingData }, Cmd.none)
+            SetClothing (Ok clothingList) ->
+                ({ model | clothes = clothingList }, Cmd.none)
             SetClothing (Err error) ->
                 ({ model | error = toString error}, Cmd.none)
-            SetClothes ->
-                ({ model | clothes = setClothes model }, Cmd.none)
+
+
 
 
 

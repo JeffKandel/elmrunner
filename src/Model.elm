@@ -12,7 +12,6 @@ type alias Model =
     , sunriseMS: Int
     , sunsetMS: Int
     , clothes: Clothes
-    , clothingDict: ClothingDict
     , error: String
     }
 
@@ -27,7 +26,6 @@ initialModel =
     , sunriseMS = 4
     , sunsetMS = 3
     , clothes = ["Shoes", "Sunblock"]
-    , clothingDict = Dict.empty
     , error = ""
     }
 

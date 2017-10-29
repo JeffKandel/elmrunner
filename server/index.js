@@ -14,6 +14,9 @@ const createApp = () => {
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
 
+    //api routes
+  app.use('/api', require('./api'))
+
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'build')))
 
@@ -34,6 +37,12 @@ const startListening = () => {
   app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`))
 }
 
-createApp()
-startListening()
+const loadClothingData = () => {
+  const scoresFilePath = path.join(__dirname,`../`, `/data`, 'clothing.json')
 
+  app.set("clothing", require(scoresFilePath));
+}
+
+createApp()
+loadClothingData()
+startListening()
