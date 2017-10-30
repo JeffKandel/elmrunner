@@ -7,32 +7,89 @@ import Update exposing (Msg(..))
 import Html exposing (..)
 import Html.Events exposing (..)
 import Html.Attributes exposing (..)
-
+import Tachyons exposing (..)
+import Tachyons.Classes as Classes exposing (..)
 
 view : Model -> Html Msg
 view model =
-    div [ class "container" ] [
-        div [ class "left-panel" ] [
-            button [ class "btn btn-success", onClick <| SetGender "male" ] [ text "Male!" ]
-            , button [ class "btn btn-success", onClick <| SetGender "female" ] [ text "Female" ]
-            , button [ class "btn btn-success", onClick <| SetFeel "cool" ] [ text "Cool" ]
-            , button [ class "btn btn-success", onClick <| SetFeel "in between" ] [ text "Medium" ]
-            , button [ class "btn btn-success", onClick <| SetFeel "warm" ] [ text "Warm" ]
-            , button [ class "btn btn-success", onClick <| SetIntensity "easy run" ] [ text "Easy" ]
-            , button [ class "btn btn-success", onClick <| SetIntensity "long run" ] [ text "Long" ]
-            , button [ class "btn btn-success", onClick <| SetIntensity "hard workout" ] [ text "Hard" ]
-            , button [ class "btn btn-success", onClick <| SetIntensity "race" ] [ text "Race" ]
+    div [ classes [pa4_l, flex, flex_wrap] ] [
+        Html.form [classes [w_50, bg_light_red, flex, items_center, justify_center, pa4, mw7, center, br2_ns, ba, b__black_10]] [
+            Html.fieldset [classes [cf, bn, ma0, pa0]] [
+                Html.legend [classes [pa0, f5, tc, f4_ns, mb3, black_80]] [
+                    tachyons.css
+                    , text "Location: Central Park"
+                ]
+                , div [classes [flex, pa4]] [
+                        Html.a [href "#1", classes [w_50, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1] , onClick <| SetGender "male"] [
+                            Html.span [classes [ center, pl1]] [
+                                text "Male"
+                            ]
+                        ]
+                        , Html.a [href "#1", classes [w_50, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1], onClick <| SetGender "female"] [
+                            Html.span [classes [ center, pl1]] [
+                                text "Female"
+                            ]
+                        ]
+                ]
+                , div [classes [flex, pa4]] [
+                        Html.a [href "#0", classes [w_33, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1] , onClick <| SetFeel "cool"] [
+                            Html.span [classes [ center, pl1]] [
+                                text "Cool"
+                            ]
+                        ]
+                        , Html.a [href "#0", classes [w_33, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1], onClick <| SetFeel "in between"] [
+                            Html.span [classes [ center, pl1]] [
+                                text "Medium"
+                            ]
+                        ]
+                        , Html.a [href "#0", classes [w_33, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1], onClick <| SetFeel "warm"] [
+                            Html.span [classes [center, pl1]] [
+                                text "Warm"
+                            ]
+                        ]
+                ]
+                , div [classes [flex, pa4]] [
+                        Html.a [href "#0", classes [w_25, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1] , onClick <| SetIntensity "easy run"] [
+                            Html.span [classes [ center, pl1]] [
+                                text "Easy"
+                            ]
+                        ]
+                        , Html.a [href "#0", classes [w_25, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1], onClick <| SetIntensity "long run"] [
+                            Html.span [classes [ center, pl1]] [
+                                text "Long"
+                            ]
+                        ]
+                        , Html.a [href "#0", classes [w_25, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1], onClick <| SetIntensity "hard workout"] [
+                            Html.span [classes [ center, pl1]] [
+                                text "Hard"
+                            ]
+                        ]
+                        , Html.a [href "#0", classes [w_25, f5, no_underline, black, bg_animate, hover_bg_black, hover_white, inline_flex, items_center, pa3, ba, border_box, mr1], onClick <| SetIntensity "race"] [
+                            Html.span [classes [ center, pl1]] [
+                                text "Race"
+                            ]
+                        ]
+                ]
+
+            ]
         ]
-        , div [ class "right-panel" ] [
-            div [] [ span [] [ text "Recommended outfit for a run in Central Park"] ]
-            , toHtmlList model.clothes
+        , div [ classes [ w_33, bg_moon_gray, items_center, justify_center, pa4, mw7, center, br2_ns, ba, b__black_10]] [
+            div [classes [cf, bn, ma0, pa0]] [
+                Html.legend [classes [pa0, f5, tc, f4_ns, mb3, black_80]] [
+                    text "Suggested Clothing"
+                ]
+                , div [classes [flex, pa4]] [
+                     toHtmlList model.clothes
+                ]
+            ]
         ]
     ]
 
+
 toHtmlList : List String -> Html msg
 toHtmlList strings =
-  ul [] (List.map toLi strings)
+  ul [ classes [Classes.list, pl0, measure, center]] (List.map toLi strings)
 
 toLi : String -> Html msg
 toLi s =
-  li [] [ text s ]
+  li [classes [lh_copy, ba, bl_0, bt_0, br_0, b__dotted, b__black_30]] [ text s ]
