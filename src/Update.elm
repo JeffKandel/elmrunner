@@ -3,8 +3,7 @@ module Update exposing (..)
 import Model exposing (Model, Clothes)
 import DecodeWeather exposing (OpenWeatherResponse, decodeOpenWeatherResponse)
 import DecodeClothing exposing (decodeClothingResponse)
-import Secrets exposing (openWeatherAPIKey)
-import Util exposing (..)
+import Util exposing (buildKeyFromModel, centralParkWeatherUrl)
 
 import Http
 
@@ -14,13 +13,6 @@ type Msg
     | SetFeel String
     | SetWeather (Result Http.Error OpenWeatherResponse)
     | SetClothing (Result Http.Error (List String))
-
-centralParkWeatherUrl : String
-centralParkWeatherUrl =
-    "https://api.openweathermap.org/"
-    ++ "data/2.5/weather?lat=40.7829&lon=-73.9654&APPID="
-    ++ openWeatherAPIKey
-    ++ "&units=imperial"
 
 getWeather : Cmd Msg
 getWeather =
@@ -32,8 +24,7 @@ getWeather =
 getClothing : Model -> Cmd Msg
 getClothing model =
     let
-      key = buildKeyFromModel model
-      url = "/api/" ++ key
+      url = "/api/" ++ buildKeyFromModel model
     in
       Http.send SetClothing (Http.get url decodeClothingResponse)
 

@@ -1,6 +1,7 @@
-module Util exposing (..)
+module Util exposing ( buildKeyFromModel, centralParkWeatherUrl )
 
-import Model exposing (Model)
+import Model exposing ( Model )
+import Secrets exposing (openWeatherAPIKey)
 
 buildKeyFromModel: Model -> String
 buildKeyFromModel model =
@@ -26,6 +27,15 @@ windFromWindSpeed speed =
     else
         "heavy wind"
 
+getRoundedTemp: Int -> Int
+getRoundedTemp temp =
+    if temp < -10 then
+        -10
+    else if temp > 100 then
+        100
+    else
+        temp // 5 * 5
+
 conditionsFromCode: Int -> String
 conditionsFromCode code =
     "light rain"
@@ -35,11 +45,9 @@ timeOfDay: (Int,Int) -> String
 timeOfDay (sunrise,sunset) =
     "day"
 
-getRoundedTemp: Int -> Int
-getRoundedTemp temp =
-    if temp < -10 then
-        -10
-    else if temp > 100 then
-        100
-    else
-        temp // 5 * 5
+centralParkWeatherUrl : String
+centralParkWeatherUrl =
+    "https://api.openweathermap.org/"
+    ++ "data/2.5/weather?lat=40.7829&lon=-73.9654&APPID="
+    ++ openWeatherAPIKey
+    ++ "&units=imperial"

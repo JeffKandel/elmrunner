@@ -10,6 +10,14 @@ import Html.Attributes exposing (..)
 import Tachyons exposing (..)
 import Tachyons.Classes as Classes exposing (..)
 
+toHtmlList : List String -> Html msg
+toHtmlList strings =
+  ul [ classes [Classes.list, pl0, measure, center]] (List.map toLi strings)
+
+toLi : String -> Html msg
+toLi s =
+  li [classes [lh_copy, ba, bl_0, bt_0, br_0, b__dotted, b__black_30]] [ text s ]
+
 view : Model -> Html Msg
 view model =
     div [ classes [pa4_l, flex, flex_wrap] ] [
@@ -86,10 +94,3 @@ view model =
     ]
 
 
-toHtmlList : List String -> Html msg
-toHtmlList strings =
-  ul [ classes [Classes.list, pl0, measure, center]] (List.map toLi strings)
-
-toLi : String -> Html msg
-toLi s =
-  li [classes [lh_copy, ba, bl_0, bt_0, br_0, b__dotted, b__black_30]] [ text s ]
