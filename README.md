@@ -10,7 +10,7 @@ elmrunner connects an Elm frontend with a simple clothing API to help you decide
 * syntax
 * types
 * architecture
-* handling API integrations
+* handling API integrations (OpenWeatherMap and custom)
 * JSON decoding
 
 # The Goods
@@ -24,6 +24,7 @@ What's it all going to look like?
 * /src/View.elm -- Styled with tachyons-elm
 
 Where are all those suggestions coming from?
+* OpenWeatherMap API
 * /src/DecodeWeather.elm
 * /src/DecodeClothing.elm
 * /server/api/index.js

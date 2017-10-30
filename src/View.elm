@@ -25,7 +25,7 @@ view model =
             Html.fieldset [classes [cf, bn, ma0, pa0]] [
                 Html.legend [classes [pa0, f5, tc, f4_ns, mb3, black_80]] [
                     tachyons.css
-                    , text "Run Location: Central Park"
+                    , text ("Run Location: Central Park, " ++ toString model.temp++"°F")
                 ]
                 , div [classes [flex, flex_column, pa4]] [
                         Html.label [classes [tl]][
