@@ -30,7 +30,10 @@ Where are all those suggestions coming from?
 * /server/index.js -- loadClothingData
 
 # Areas for Improvement
-elmrunner is a work in progress.  Going forward, I would like to learn more about Elm syntax and dry out the code in View.elm and Update.elm.  I will need to make it mobile responsive.  I want to revisit the clothing lookup and try to represent the data locally as an Elm Dict.  I would also add additional functionality to let users select their run location and to better process weather data.
+* Dry out the code in View.elm and Update.elm.
+* Move data into Elm using a `Dict`
+* Let users select their run location
+* Better process weather data.
 
 
 # Thanks To
