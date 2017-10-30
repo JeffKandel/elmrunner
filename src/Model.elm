@@ -17,14 +17,14 @@ type alias Model =
 initialModel : Model
 initialModel =
     { gender = "female"
-    , intensity = "easy run"
+    , intensity = "hard workout"
     , feel = "in between"
     , temp = 60
     , conditionsCode = 800
     , windSpeed = 5
     , sunriseMS = 4
     , sunsetMS = 3
-    , clothes = ["Shoes","Sunblock","Socks"]
+    , clothes = []
     }
 
 type alias Clothes =
