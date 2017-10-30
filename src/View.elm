@@ -20,7 +20,7 @@ toLi s =
 
 view : Model -> Html Msg
 view model =
-    div [ classes [pa4_l, flex, flex_wrap_ns] ] [
+    div [ classes [pa4_l, flex_l, flex_wrap_ns] ] [
         Html.form [classes [w_50_l, bg_light_red, flex, items_center, justify_center, pa4, mw7, center, br2_ns, ba, b__black_10]] [
             Html.fieldset [classes [cf, bn, ma0, pa0]] [
                 Html.legend [classes [pa0, f5, tc, f4_ns, mb3, black_80]] [
