@@ -14,19 +14,6 @@ type Msg
     | SetWeather (Result Http.Error OpenWeatherResponse)
     | SetClothing (Result Http.Error (List String))
 
-getWeather : Cmd Msg
-getWeather =
-  let
-    url = centralParkWeatherUrl
-  in
-    Http.send SetWeather (Http.get url decodeOpenWeatherResponse)
-
-getClothing : Model -> Cmd Msg
-getClothing model =
-    let
-      url = "/api/" ++ buildKeyFromModel model
-    in
-      Http.send SetClothing (Http.get url decodeClothingResponse)
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -67,6 +54,19 @@ update msg model =
             SetClothing (Err error) ->
                 ( model , Cmd.none)
 
+getWeather : Cmd Msg
+getWeather =
+  let
+    url = centralParkWeatherUrl
+  in
+    Http.send SetWeather (Http.get url decodeOpenWeatherResponse)
+
+getClothing : Model -> Cmd Msg
+getClothing model =
+    let
+      url = "/api/" ++ buildKeyFromModel model
+    in
+      Http.send SetClothing (Http.get url decodeClothingResponse)
 
 
 
