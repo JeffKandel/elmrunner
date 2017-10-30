@@ -12,6 +12,7 @@ elmrunner connects an Elm frontend with a simple clothing API to help you decide
 * architecture
 * handling API integrations (OpenWeatherMap and custom)
 * JSON decoding
+* Elm build tool
 
 # The Goods
 What's the state of my application?
