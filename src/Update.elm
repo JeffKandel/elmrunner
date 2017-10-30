@@ -45,19 +45,19 @@ update msg model =
                     updatedModel =
                         { model | gender = selectedGender }
                 in
-                    ( model, getClothing updatedModel )
+                    ( updatedModel, getClothing updatedModel )
             SetIntensity selectedIntensity ->
                 let
                     updatedModel =
                         { model | intensity = selectedIntensity }
                 in
-                    ( model, getClothing updatedModel )
+                    ( updatedModel, getClothing updatedModel )
             SetFeel selectedFeel ->
                 let
                     updatedModel =
                         { model | feel = selectedFeel }
                 in
-                    ( model, getClothing updatedModel )
+                    ( updatedModel, getClothing updatedModel )
             SetWeather (Ok weatherData) ->
                 let
                     updatedModel =
@@ -68,7 +68,7 @@ update msg model =
                           , conditionsCode = weatherData.conditionsCode.code
                         }
                 in
-                    ( model, getClothing updatedModel )
+                    ( updatedModel, getClothing updatedModel )
             SetWeather (Err _) ->
                 (model, Cmd.none)
             SetClothing (Ok clothingList) ->
