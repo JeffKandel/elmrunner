@@ -24,7 +24,7 @@ initialModel =
     , windSpeed = 5
     , sunriseMS = 4
     , sunsetMS = 3
-    , clothes = []
+    , clothes = ["Shoes","Sunblock","Socks"]
     }
 
 type alias Clothes =
