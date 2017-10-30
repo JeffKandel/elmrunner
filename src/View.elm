@@ -27,7 +27,7 @@ view model =
                     tachyons.css
                     , text ("Run Location: Central Park, " ++ toString model.temp++"°F")
                 ]
-                , div [classes [flex, flex_column, pa4]] [
+                , div [classes [flex, flex_column, pa4_ns]] [
                         Html.label [classes [tl]][
                             Html.span [ classes [f6, dark_gray]] [
                                 text "My clothes style is..."
@@ -46,7 +46,7 @@ view model =
                             ]
                         ]
                 ]
-                , div [classes [flex, flex_column, pa4]] [
+                , div [classes [flex, flex_column, pa4_ns]] [
                         Html.label [classes [tl]][
                             Html.span [ classes [f6, dark_gray]] [
                                 text "I want to feel..."
@@ -70,7 +70,7 @@ view model =
                             ]
                     ]
                 ]
-                , div [classes [flex, flex_column, pa4]] [
+                , div [classes [flex, flex_column, pa4_ns]] [
                         Html.label [classes [tl]][
                             Html.span [ classes [f6, dark_gray]] [
                                 text "My run will be..."
