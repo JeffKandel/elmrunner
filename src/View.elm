@@ -109,7 +109,7 @@ view model =
                 , if model.temp > 45 then div [classes [flex, pa4]] [
                      toHtmlList model.clothes
                 ] else div [classes [flex, pa4]] [
-                     text "No recommendation is not available for the current weather conditions.  Come back when things warm up!"
+                     text "No recommendation is available for current weather conditions.  Come back when things warm up!"
                 ]
             ]
         ]
