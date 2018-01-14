@@ -106,8 +106,10 @@ view model =
                 Html.legend [classes [pa0, f5, tc, f4_ns, mb3, black_80]] [
                     text "Suggested Clothing"
                 ]
-                , div [classes [flex, pa4]] [
+                , if model.temp > 45 then div [classes [flex, pa4]] [
                      toHtmlList model.clothes
+                ] else div [classes [flex, pa4]] [
+                     text "No recommendation is not available for the current weather conditions.  Come back when things warm up!"
                 ]
             ]
         ]
